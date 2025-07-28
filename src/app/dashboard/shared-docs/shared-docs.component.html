@@ -1,0 +1,40 @@
+<div class="main-content-container">
+  <h2 class="section-title">Documentos Compartidos</h2>
+
+  <div class="search-bar-container">
+    <input
+      type="text"
+      [(ngModel)]="searchTerm"
+      (ngModelChange)="applyFilter()"
+      class="form-input search-input"
+      placeholder="Buscar por nombre, categoría o usuario..."
+    />
+  </div>
+
+  <div *ngIf="publicDocuments.length === 0 && !cargando" class="info-message">
+    <p>No hay documentos públicos compartidos aún.</p>
+  </div>
+
+  <div *ngIf="cargando" class="loading-message">
+    <p>Cargando documentos compartidos...</p>
+  </div>
+
+  <ul *ngIf="filteredPublicDocuments.length > 0 && !cargando" class="document-list">
+    <li *ngFor="let doc of filteredPublicDocuments" class="document-item">
+      <div class="document-details">
+        <span class="document-name">{{ doc.originalName }}</span>
+        <span class="document-category">Categoría: {{ doc.category }}</span>
+        <span class="document-date">Subido: {{ formatDate(doc.createdAt) }}</span>
+        <span class="document-uploader">Subido por: {{ doc.uploadedBy?.name || 'Usuario desconocido' }}</span>
+        <span class="document-visibility-badge public">Público</span>
+      </div>
+      <div class="document-actions">
+        <button (click)="download(doc._id, doc.originalName)" class="action-button primary-button">Descargar</button>
+      </div>
+    </li>
+  </ul>
+
+  <div *ngIf="publicDocuments.length > 0 && filteredPublicDocuments.length === 0 && searchTerm && !cargando" class="info-message">
+    <p>No se encontraron documentos que coincidan con "{{ searchTerm }}".</p>
+  </div>
+</div>

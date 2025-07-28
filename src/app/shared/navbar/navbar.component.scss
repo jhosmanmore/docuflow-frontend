@@ -1,0 +1,137 @@
+.navbar-container {
+  background-color: #2c3e50;
+  color: white;
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+  font-family: 'DM Sans', serif;
+  flex-wrap: nowrap;
+  gap: 40px;
+}
+
+.logo-and-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.app-logo {
+  width: 30px;
+  height: 30px;
+  color: #007bff;
+}
+
+.app-title {
+  font-size: 1.6em;
+  font-weight: 700;
+  color: white;
+  margin: 0;
+}
+
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.8em;
+  cursor: pointer;
+  padding: 5px;
+  transition: transform 0.3s ease;
+  margin-left: auto;
+}
+
+.menu-toggle svg {
+  width: 24px;
+  height: 24px;
+}
+
+.menu-toggle:hover {
+  transform: scale(1.1);
+}
+
+.nav-links-wrapper {
+  display: flex;
+  gap: 25px;
+  align-items: center;
+}
+
+.nav-link {
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1em;
+  padding: 5px 0;
+  transition: color 0.3s ease, border-bottom 0.3s ease;
+  border-bottom: 2px solid transparent;
+}
+
+.nav-link:hover {
+  color: white;
+  border-bottom-color: #007bff;
+}
+
+.nav-link.active {
+  color: white;
+  font-weight: 600;
+  border-bottom-color: #007bff;
+}
+
+.logout-link {
+  color: #ff6347;
+}
+
+.logout-link:hover {
+  color: #e04e30;
+  border-bottom-color: #e04e30;
+}
+
+@media (max-width: 768px) {
+  .navbar-container {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    gap: 0;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav-links-wrapper {
+    display: flex;
+    flex-direction: column;
+    background-color: #34495e;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    padding: 0;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-in-out, padding 0.3s ease-in-out;
+    z-index: 1000;
+    margin-left: 0;
+    box-sizing: border-box;
+  }
+
+  .nav-links-wrapper.open {
+    max-height: 100%;
+    padding: 15px 20px;
+  }
+
+  .nav-link {
+    width: 100%;
+    text-align: left;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .nav-link:last-child {
+    border-bottom: none;
+  }
+}

@@ -1,0 +1,73 @@
+<div class="main-content-container">
+  <h2 class="section-title">Lista de Usuarios</h2>
+
+  <div class="search-bar-container">
+    <input
+      type="text"
+      [(ngModel)]="filtro"
+      class="form-input search-input"
+      placeholder="Buscar por nombre o correo..."
+    />
+  </div>
+
+  <div *ngIf="cargando" class="loading-message">
+    <p>Cargando usuarios...</p>
+  </div>
+
+  <div *ngIf="!cargando && usuarios.length === 0" class="info-message">
+    <p>No hay usuarios para mostrar.</p>
+  </div>
+
+  <ul *ngIf="!cargando && usuarios.length > 0" class="user-list">
+    <li *ngFor="let usuario of usuarios | filtroUsuario: filtro" class="user-item">
+      <div class="user-details">
+        <span class="user-name">{{ usuario.name }}</span>
+        <span class="user-email">{{ usuario.email }}</span>
+        <span class="user-role">Rol: {{ usuario.role === 'admin' ? 'Administrador' : 'Usuario' }}</span>
+        <span *ngIf="isDemoUser(usuario._id)" class="demo-badge">
+          {{ usuario.role === 'admin' ? 'Admin demo' : 'Usuario demo' }}
+        </span>
+      </div>
+      <div class="user-actions">
+        <ng-container *ngIf="usuario._id === currentUserId; else otherUserActions">
+          <span class="badge current-user-badge">Usuario actual</span>
+        </ng-container>
+        <ng-template #otherUserActions>
+          <!-- <button class="action-button primary-button" (click)="editarUsuario(usuario)">Editar</button> -->
+          <button class="action-button primary-button" (click)="editarUsuario(usuario)" [disabled]="isDemoUser(usuario._id)" [class.disabled-button]="isDemoUser(usuario._id)">Editar</button>
+          <button class="action-button danger-button" (click)="eliminarUsuario(usuario._id)" [disabled]="isDemoUser(usuario._id)" [class.disabled-button]="isDemoUser(usuario._id)">Eliminar</button>
+        </ng-template>
+      </div>
+    </li>
+  </ul>
+
+  <div *ngIf="usuarioEdit" class="modal fade" #editModal id="editUserModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <form (ngSubmit)="guardarCambios()">
+          <div class="modal-header">
+            <h5 class="modal-title form-title">Editar Usuario</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+          </div>
+          <div class="modal-body">
+            <div class="form-group">
+              <label for="editName">Nombre</label>
+              <input type="text" id="editName" class="form-input" [(ngModel)]="usuarioEdit.name" name="name" required />
+            </div>
+            <div class="form-group">
+              <label for="editRole">Rol</label>
+              <select id="editRole" class="form-input" [(ngModel)]="usuarioEdit.role" name="role" required>
+                <option value="admin">Administrador</option>
+                <option value="user">Usuario</option>
+              </select>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="action-button primary-button">Guardar</button>
+            <button type="button" class="action-button secondary-button" data-bs-dismiss="modal">Cancelar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

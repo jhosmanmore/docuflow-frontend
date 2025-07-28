@@ -1,0 +1,43 @@
+<div class="main-content-container">
+  <h2 class="section-title">Mis Documentos</h2>
+
+  <div class="search-bar-container">
+    <input
+      type="text"
+      [(ngModel)]="searchTerm"
+      (ngModelChange)="applyFilter()"
+      class="form-input search-input"
+      placeholder="Buscar por nombre o categoría..."
+    />
+  </div>
+
+  <div *ngIf="documents.length === 0 && !cargando" class="info-message">
+    <p>No tienes documentos subidos aún.</p>
+    <p>¡Sube tu primer documento para empezar!</p>
+  </div>
+
+  <div *ngIf="cargando" class="loading-message">
+    <p>Cargando documentos...</p>
+  </div>
+
+  <ul *ngIf="filteredDocuments.length > 0 && !cargando" class="document-list">
+    <li *ngFor="let doc of filteredDocuments" class="document-item">
+      <div class="document-details">
+        <span class="document-name">{{ doc.originalName }}</span>
+        <span class="document-category">Categoría: {{ doc.category }}</span>
+        <span class="document-date">Subido: {{ formatDate(doc.createdAt) }}</span>
+        <span class="document-visibility-badge" [class.public]="doc.visibility === 'public'" [class.private]="doc.visibility === 'private'">
+          {{ doc.visibility === 'public' ? 'Público' : 'Privado' }}
+        </span>
+      </div>
+      <div class="document-actions">
+        <button (click)="download(doc._id, doc.originalName)" class="action-button primary-button">Descargar</button>
+        <button (click)="deleteDocument(doc._id)" class="action-button danger-button">Eliminar</button>
+      </div>
+    </li>
+  </ul>
+
+  <div *ngIf="documents.length > 0 && filteredDocuments.length === 0 && searchTerm && !cargando" class="info-message">
+    <p>No se encontraron documentos que coincidan con "{{ searchTerm }}".</p>
+  </div>
+</div>

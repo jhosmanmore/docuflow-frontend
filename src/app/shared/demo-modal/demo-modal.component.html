@@ -1,0 +1,22 @@
+<div class="modal-overlay" *ngIf="showModal">
+  <div class="modal-content-custom">
+    <div class="modal-header-custom">
+      <h5 class="modal-title-custom">{{ title }}</h5>
+      <button type="button" class="close-button-custom" (click)="onClose()" aria-label="Close">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+    <div class="modal-body-custom">
+      <p [innerHTML]="message"></p>
+    </div>
+    <div class="modal-footer-custom">
+      <button type="button" class="action-button primary-button" (click)="onClose()">Entendido</button>
+    </div><br>
+      <p><strong>Desarrollado por:</strong> Jhosman Moreno</p>
+      <a href="https://github.com/jhosmanmore" target="_blank"><img src="git.ico" alt="GitHub" style="margin-right: 10px;">GitHub</a> |
+      <a href="https://linkedin.com/in/jhosman-moreno" target="_blank"><img src="link.ico" alt="LinkedIn" style="margin-right: 10px;">LinkedIn</a>
+  </div>
+</div>
