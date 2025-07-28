@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
-  authApiUrl: 'http://<DIRECCIÓN_IP_PÚBLICA_DE_EC2>:3001/api/auth',
-  userApiUrl: 'http://<DIRECCIÓN_IP_PÚBLICA_DE_EC2>:3002/api/users',
-  documentApiUrl: 'http://<DIRECCIÓN_IP_PÚBLICA_DE_EC2>:3003/api/documents'
+  authApiUrl: 'http://23.20.113.121:3001/api/auth',
+  userApiUrl: 'http://23.20.113.121:3002/api/users',
+  documentApiUrl: 'http://23.20.113.121:3003/api/documents'
 };
