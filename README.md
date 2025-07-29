@@ -2,11 +2,13 @@
 
 
 ### 📄 Descripción del Proyecto
-Este repositorio contiene el código fuente del frontend de Docuflow, una aplicación web moderna para la gestión y organización de documentos en la nube. Docuflow permite a los usuarios subir, almacenar, descargar y eliminar sus archivos de forma segura, con opciones de visibilidad pública y privada. Además, incluye una sección para explorar documentos compartidos por otros usuarios y un panel de administración para la gestión de usuarios.
+Este repositorio contiene el código fuente del frontend de Docuflow, una aplicación web para la gestión y organización de documentos en línea. Docuflow permite a los usuarios subir, almacenar, descargar y eliminar sus archivos de forma segura, con opciones de visibilidad pública y privada. Además, incluye una sección para explorar documentos compartidos por otros usuarios y un panel de administración para la gestión de usuarios.
 
 Desarrollado con Angular, este frontend interactúa con un conjunto de microservicios Node.js/Express desplegados en AWS EC2, proporcionando una experiencia de usuario fluida y reactiva.
 
-Este proyecto es parte de mi portafolio personal, demostrando mis habilidades en el desarrollo web frontend y la integración con arquitecturas de microservicios.
+Este proyecto fue desarrolaldo como parte de mi portafolio personal, demostrando mis habilidades en el desarrollo web frontend y la integración con arquitecturas de microservicios.
+
+---
 
 ### ✨ Características Principales
 #### Autenticación de Usuarios: 
@@ -59,7 +61,9 @@ Este proyecto es parte de mi portafolio personal, demostrando mis habilidades en
 
 #### Despliegue Frontend:
 
-- Vercel (Actualmente sin despligue)
+- Vercel (Actualmente inactivo)
+
+---
 
 ### 🏗️ Arquitectura del Frontend
 - El frontend de Docuflow es una Single Page Application (SPA) construida con Angular, que se comunica con un backend de microservicios a través de peticiones HTTP RESTful.
@@ -71,6 +75,8 @@ Este proyecto es parte de mi portafolio personal, demostrando mis habilidades en
 - Guardias de Ruta: Implementa AuthGuard y AdminGuard para proteger rutas y asegurar el acceso basado en el rol del usuario.
 
 - Interceptores HTTP: Un AuthInterceptor se encarga de añadir automáticamente el token JWT a las cabeceras de todas las peticiones salientes.
+
+---
 
 ### 📸 Capturas
 #### Inicio y registro:
@@ -99,6 +105,9 @@ Este proyecto es parte de mi portafolio personal, demostrando mis habilidades en
 
 ## Conexión al Backend
 - El frontend se conecta a los microservicios backend desplegados en AWS EC2.
+Repositorio al Backend: [Docuflow - Backend](https://github.com/jhosmanmore/docuflow)
 
-#### Desarrollado por: 
-Jhosman Moreno
+---
+
+### ✅ Autor
+Desarrollado por [Jhosman Moreno](https://www.linkedin.com/in/jhosman-moreno/)
